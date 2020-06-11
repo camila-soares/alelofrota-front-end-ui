@@ -1,0 +1,80 @@
+<header>
+    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="javascript:;" th:href="@{/}">Veiculos</a>
+        </div>
+    </nav>
+  </header>
+  
+  <main role="main">
+    <section class="my-4">
+      <div class="container">
+          <h2>Alteração de Veiculo</h2>
+      </div>
+    </section>
+  
+    <section>
+      <div class="container">
+        <form (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+                <label for="placa">Placa</label>
+                <input  type="text" id="placa" name="placa"
+                  class="form-control"
+                  [(ngModel)]="veiculo.placa" required/>
+              </div>  
+
+              <div class="form-group">
+                <label for="modelo">Modelo</label>
+                <input type="text" id="modelo" name="modelo"
+                  class="form-control" 
+                  [(ngModel)]="veiculo.modelo" required/>
+              </div>
+
+
+          <div class="form-group">
+            <label for="marca">Marca</label>
+            <input type="text" name="marca"
+              class="form-control" id="marca"
+              [(ngModel)]="veiculo.nome" required/>
+          </div>
+      
+          <div class="form-group">
+            <label for="status">Status</label>
+            <select class="form-control" name="status" id="status" [(ngModel)]="veiculo.status" >
+              <option>Selecione...</option>
+              <option type="ATIVO" name="ATIVO" value="ATIVO">Ativo</option>
+              <option  type="INATIVO" name="INATIVO" value  ="INATIVO">Inativo</option>
+            </select>  
+        </div>
+  
+       
+  
+       
+  
+        <div class="form-group">
+          <label for="naturalidade">Naturalidade</label>
+          <input type="text" id="naturalidade" name="naturalidade"
+              class="form-control"
+              [(ngModel)]="pessoa.naturalidade" required/>
+          </div>
+        
+          
+        <div class="form-group">
+          <label for="nacionalidade">Nacionalidade</label>
+          <input type="text" class="form-control" id="nacionalidade" name="nacionalidade"
+              [(ngModel)]="pessoa.nacionalidade" required/>
+        </div>
+  
+        <div class="form-group">
+            <label for="cpf">CPF</label>
+            <input class="form-control" maxlength="11" type="text" id="cpf" name="cpf"
+                [(ngModel)]="pessoa.cpf" required/>
+            </div>
+          
+  
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+      </div>
+    </section>
+  </main>

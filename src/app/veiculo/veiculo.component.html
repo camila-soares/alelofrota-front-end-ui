@@ -1,0 +1,88 @@
+<header>
+    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="javascript:;" th:href="@{/}">Veiculos</a>
+        </div>
+    </nav>
+  </header>
+  
+  <main role="main">
+    <section class="my-4">
+      <div class="container">
+          <h2>Cadastro de veiculos</h2>
+      </div>
+    </section>
+  
+    <section>
+      <div class="container">
+        <form  method="post" #frm="ngForm" (ngSubmit)="criar(frm)">
+
+            <div class="form-group">
+                <label for="placa">Placa</label>
+                <input  type="text"  name="placa"
+                  class="form-control" placeholder="Placa"
+                  [(ngModel)]="veiculo.placa" />
+              </div> 
+
+          <div class="form-group">
+            <label for="modelo">Modelo</label>
+            <input type="text" name="modelo"
+              class="form-control" placeholder="modelo"
+              [(ngModel)]="veiculo.modelo" required/>
+          </div>
+      
+          <div class="form-group">
+            <label for="marca">Marca</label>
+            <input type="text" name="marca" class="form-control" placeholder="marca"
+            [(ngModel)]="veiculo.marca" required/> 
+        </div>
+  
+        
+  
+        <div class="form-group">
+          <label for="status">Status</label>
+          <select class="form-control" name="status" id="status" [(ngModel)]="veiculo.status" >
+          <option selected>Selecione...</option>
+            <option type="ATIVO" name="ATIVO" value="ATIVO">Ativo</option>
+            <option  type="INATIVO" name="INATIVO" value  ="INATIVO">Inativo</option>
+            </select>
+        </div>
+  
+       
+  
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+      </div>
+    </section>
+  
+    <section class="mt-5">
+      <div class="container">
+        <div class="table-responsive">
+          <table class="table table-bordered table-hover">
+            <thead class="thead-light text-center">
+              <tr>
+                <th>Código</th>
+                <th class="w-50">Modelo</th>
+                <th class="w-25">Marca</th>
+                <th class="w-25">Placa</th>
+                <th class="w-25">Status</th>
+                <th class="w-25">Ações</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr *ngFor="let v of veiculos">
+                <td class="text-center w-10">{{v.id}}</td>
+                <td>{{v.marca}}</td>
+                <td>{{v.modelo}}</td>
+                <td>{{v.placa}}</td>
+                <td>{{v.status}}</td>
+                <button type="button" (click)="updateVeiculo(v.id)" class="btn btn-secundary">Alterar</button>
+                <button type="button" (click)="delete(v.id)"class="btn btn-danger">Excluir</button>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
