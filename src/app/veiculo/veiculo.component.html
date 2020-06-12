@@ -44,7 +44,7 @@
           <select class="form-control" name="status" id="status" [(ngModel)]="veiculo.status" >
           <option selected>Selecione...</option>
             <option type="ATIVO" name="ATIVO" value="ATIVO">Ativo</option>
-            <option  type="INATIVO" name="INATIVO" value  ="INATIVO">Inativo</option>
+            <option  type="INATIVO" name="INATIVO" value="INATIVO">Inativo</option>
             </select>
         </div>
   
@@ -62,9 +62,9 @@
             <thead class="thead-light text-center">
               <tr>
                 <th>Código</th>
+                <th class="w-25">Placa</th>
                 <th class="w-50">Modelo</th>
                 <th class="w-25">Marca</th>
-                <th class="w-25">Placa</th>
                 <th class="w-25">Status</th>
                 <th class="w-25">Ações</th>
               </tr>
@@ -73,9 +73,9 @@
             <tbody>
               <tr *ngFor="let v of veiculos">
                 <td class="text-center w-10">{{v.id}}</td>
-                <td>{{v.marca}}</td>
-                <td>{{v.modelo}}</td>
                 <td>{{v.placa}}</td>
+                <td>{{v.modelo}}</td>
+                <td>{{v.marca}}</td>
                 <td>{{v.status}}</td>
                 <button type="button" (click)="updateVeiculo(v.id)" class="btn btn-secundary">Alterar</button>
                 <button type="button" (click)="delete(v.id)"class="btn btn-danger">Excluir</button>

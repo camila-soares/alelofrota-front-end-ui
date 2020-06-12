@@ -7,7 +7,7 @@ import { UpdateVeiculoComponent } from './update-veiculo/update-veiculo.componen
 
 export const APP_ROUTES: Routes = [
   { path: '', component: VeiculoComponent},
-  { path: 'update/', component: UpdateVeiculoComponent}
+  { path: ':id', component: UpdateVeiculoComponent}
 ];
 
 

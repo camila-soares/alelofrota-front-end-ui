@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NO_ERRORS_SCHEMA } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 import { FormGroup, } from '@angular/forms';
 import { format } from 'url';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-veiculo',
   templateUrl: './veiculo.component.html',
@@ -11,7 +12,7 @@ import { format } from 'url';
 export class VeiculoComponent implements OnInit {
 veiculos: Array<any>;
 veiculo: any;
-codigo: number;
+id: number;
 
   constructor(private service: AppService, private router: Router) { }
 
@@ -34,20 +35,26 @@ codigo: number;
       alert("Veiculo cadastrado com sucesso");
       console.log(resposta)
       this.veiculos.push(resposta);
-
       frm.reset();
+      this.load();
       this.service.listar();
+    }, errors => {
+      if(errors.status == 400){
+        alert("existe campos obrigatórios vázio")
+      }
     });
+    
 }
 
-updateVeiculo(codigo: number) {
-  this.router.navigate(['', codigo]);
+
+updateVeiculo(id: number) {
+  this.router.navigate(['', id]);
  }
 
  
 
- delete(codigo: number) {
-  this.service.dleteVeiculo(codigo).subscribe(resposta => {
+ delete(id: number) {
+  this.service.dleteVeiculo(id).subscribe(resposta => {
     //confirm("Deseja realmente excluir?")
     alert("Veiculo excluido com sucesso ")
     this.load();
