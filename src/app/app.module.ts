@@ -5,8 +5,10 @@ import {  APP_ROUTES, AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
 import { VeiculoComponent } from './veiculo/veiculo.component';
 import { RouterModule } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateVeiculoComponent } from './update-veiculo/update-veiculo.component';
+import { AppService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,12 @@ import { UpdateVeiculoComponent } from './update-veiculo/update-veiculo.componen
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgxPaginationModule,
     //AppRoutingModule,
     FormsModule,
     RouterModule.forRoot(APP_ROUTES)
   ],
-  providers: [],
+  providers: [HttpClientModule, AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

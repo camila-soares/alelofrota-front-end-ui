@@ -1,28 +1,36 @@
-import { Component, OnInit, NO_ERRORS_SCHEMA } from '@angular/core';
+import * as core from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 import { FormGroup, } from '@angular/forms';
 import { format } from 'url';
 import { HttpErrorResponse } from '@angular/common/http';
-@Component({
+import { Veiculo } from '../veiculo';
+@core.Component({
   selector: 'app-veiculo',
   templateUrl: './veiculo.component.html',
   styleUrls: ['./veiculo.component.css']
 })
-export class VeiculoComponent implements OnInit {
-veiculos: Array<any>;
+export class VeiculoComponent implements core.OnInit {
+private veiculos: Array<any> = [];
+_veiculo: Veiculo[] = [];
+paginaAtual : Number = 1 ;
+contador : Number = 5;
 veiculo: any;
 id: number;
 
   constructor(private service: AppService, private router: Router) { }
 
   ngOnInit() {
-    this.veiculo = {};
+   // this.pageVeiculo(0, 10);
+    this.veiculo = [];
 
     this.service.listar()
-    .subscribe((resposta) => {
-      console.log(resposta)
-      this.veiculos = (resposta)
+    .subscribe(res => {
+     
+      this.veiculos = res;
+      console.log(this.veiculos)
+      error => console.log('Erro service' + error
+      )
     
     }
     );
@@ -64,6 +72,11 @@ updateVeiculo(id: number) {
   });
 }
 
+pageVeiculo(page, size){
+  this.service.getVeiculoPage(page, size).subscribe(res => {
+    this._veiculo = res.content;
+  })
+}
 
 load() {
   console.log(sessionStorage);

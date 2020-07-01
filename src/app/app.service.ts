@@ -18,9 +18,13 @@ import { Veiculo } from './veiculo';
     getVeiculo(id: number): Observable<any> {
       return this.http.get(`${this.veiculoUrl}/${id}`);
     }
+
+    getVeiculoPage(page: number, size:number): Observable<any> {
+      return this.http.get(`${this.veiculoUrl}/page=${page}?size${size}`);
+    }
   
     listar() {
-      return this.http.get<Array<any>>(this.veiculoUrl);
+      return this.http.get<Veiculo[]>(this.veiculoUrl);
     }
   
     updateVeiculo(id: number, veiculo:any): Observable<object>{
