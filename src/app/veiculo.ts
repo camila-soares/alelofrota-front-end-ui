@@ -1,8 +1,9 @@
 export class Veiculo{
     
-    id: number;
-    marca: string;
-    modelo: string;
-    placa:  string;
+  
+    plate: string;
+    model: string;
+    manufacturer:  string;
+    color: string;
     status: string;
 }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { VeiculoComponent } from './veiculo/veiculo.component';
 import { Veiculo } from './veiculo';
 
 @Injectable({
@@ -9,10 +8,15 @@ import { Veiculo } from './veiculo';
   })
 
   export class AppService {
+    filtro: string;
+    titulo: string;
     id: number;
     veiculoUrl = 'http://localhost:8080/veiculo';
 
-  
+  // Headers
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  }
     constructor(private http: HttpClient) { }
 
     getVeiculo(id: number): Observable<any> {
@@ -34,11 +38,10 @@ import { Veiculo } from './veiculo';
     dleteVeiculo(id){
       return this.http.delete<Array<any>>(this.veiculoUrl+'/'+`${id}`)
     }
-  
-    criar(veiculo: any) {
-      return this.http.post(this.veiculoUrl, veiculo, {
-        observe: 'response',
-        responseType: 'text'
-      })
-    }
+
+    createVeiculo(veiculo): Observable<Veiculo> {  
+      return this.http.post<Veiculo>(this.veiculoUrl,  JSON.stringify(veiculo), this.httpOptions);  
+    }  
+
+   
 }

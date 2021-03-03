@@ -18,47 +18,54 @@
         <form (ngSubmit)="onSubmit()">
 
             <div class="form-group">
-                <label for="placa">Placa</label>
-                <input  type="text" id="placa" name="placa"
+              <mat-form-field class="example-full-width">
+                <mat-label>Plate</mat-label>
+                <input  matInput  id="plate" name="plate"
                   class="form-control"
-                  [(ngModel)]="veiculo.placa" required/>
+                  [(ngModel)]="veiculo.plate" required disabled/>
+                </mat-form-field>
               </div>  
 
+        
+
               <div class="form-group">
-                <label for="modelo">Modelo</label>
-                <input type="text" id="modelo" name="modelo"
+                <mat-form-field class="example-full-width">
+                  <mat-label>Model</mat-label>
+                <input matInput  id="model" name="model"
                   class="form-control" 
-                  [(ngModel)]="veiculo.modelo" required/>
+                  [(ngModel)]="veiculo.model" required/>
+                </mat-form-field>
               </div>
 
 
           <div class="form-group">
-            <label for="marca">Marca</label>
-            <input type="text" name="marca"
-              class="form-control" id="marca"
-              [(ngModel)]="veiculo.marca" required/>
+            <mat-form-field class="example-full-width">
+                  <mat-label>Manufacturer</mat-label>
+            <input matInput name="manufacturer"
+              class="form-control" id="manufacturer"
+              [(ngModel)]="veiculo.manufacturer" required/>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <mat-label>COlor</mat-label>
+            <input matInput name="color"
+              class="form-control" id="color"
+              [(ngModel)]="veiculo.color" required/>
+            </mat-form-field>
           </div>
       
           <div class="form-group">
-            <label for="status">Status</label>
-            <select class="form-control" name="status" id="status" [(ngModel)]="veiculo.status" >
+            <mat-form-field appearance="fill">
+              <mat-label>Status</mat-label>
+            <select matNativeControl name="status" id="status" [(ngModel)]="veiculo.status" >
               <option>Selecione...</option>
               <option type="ATIVO" name="ATIVO" value="ATIVO">Ativo</option>
               <option  type="INATIVO" name="INATIVO" value  ="INATIVO">Inativo</option>
             </select>  
+            </mat-form-field>
         </div>
-  
-       
-  
-       
-  
-       
-        
-          
-       
-  
-   
-          
   
           <button type="submit" class="btn btn-primary">Salvar</button>
         </form>

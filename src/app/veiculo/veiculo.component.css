@@ -1,0 +1,21 @@
+.btn {
+    float: right;
+}
+
+.form-control{
+    width: 120px;
+}
+
+/* .navbar {
+    padding: -1.5rem 1rem; 
+    width: 231px;
+    height: 600px;
+} */
+.navbar[_ngcontent-lpf-c1]{
+    width: 231px;
+    height: 600px;
+}
+
+.example-full-seach{
+    width: 900px;
+}

@@ -1,9 +1,6 @@
 import * as core from '@angular/core';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
-import { FormGroup, } from '@angular/forms';
-import { format } from 'url';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Veiculo } from '../veiculo';
 @core.Component({
   selector: 'app-veiculo',
@@ -14,7 +11,7 @@ export class VeiculoComponent implements core.OnInit {
 private veiculos: Array<any> = [];
 _veiculo: Veiculo[] = [];
 paginaAtual : Number = 1 ;
-contador : Number = 5;
+contador : Number = 10;
 veiculo: any;
 id: number;
 
@@ -26,7 +23,6 @@ id: number;
 
     this.service.listar()
     .subscribe(res => {
-     
       this.veiculos = res;
       console.log(this.veiculos)
       error => console.log('Erro service' + error
@@ -37,22 +33,22 @@ id: number;
    
   }
 
-  criar(frm: FormGroup) {
-    this.service.criar(this.veiculo)
-      .subscribe((resposta) => { 
-      alert("Veiculo cadastrado com sucesso");
-      console.log(resposta)
-      this.veiculos.push(resposta);
-      frm.reset();
-      this.load();
-      this.service.listar();
-    }, errors => {
-      if(errors.status == 400){
-        alert("existe campos obrigatórios vázio")
-      }
-    });
+//   criar(frm: FormGroup) {
+//     this.service.criar(this.veiculo)
+//       .subscribe((resposta) => { 
+//       alert("Veiculo cadastrado com sucesso");
+//       console.log(resposta)
+//       this.veiculos.push(resposta);
+//       frm.reset();
+//       this.load();
+//       this.service.listar();
+//     }, errors => {
+//       if(errors.status == 400){
+//         alert("existe campos obrigatórios vázio")
+//       }
+//     });
     
-}
+// }
 
 
 updateVeiculo(id: number) {
