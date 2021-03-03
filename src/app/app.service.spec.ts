@@ -7,16 +7,11 @@ describe('UserManagementService', () => {
     let httpTestingController: HttpTestingController;
   
     const params = {
-      name: 'teste',
-      login: '54020661081',
-      domains: ['BACK_OFFICE'],
-      status: 'ACTIVE',
-      cpf: '54020661081',
-      email: 'teste@teste.com.br',
-      company: '',
-      job: '',
-      password: '12345678',
-      loading: false
+        plate: 'PDH-4412',
+        model: 'PCX',
+        manufacturer:  'HONDA',
+        color: 'CINZA',
+        status: 'ACTIVE',
     };
   
     beforeEach(() => {
@@ -49,7 +44,7 @@ describe('UserManagementService', () => {
       it('should called the right url', () => {
         service.createVeiculo(params).subscribe(() => { });
   
-        const req = httpTestingController.expectOne('http://teste.com/backoffice/users');
+        const req = httpTestingController.expectOne('http://teste.com/veiculo');
   
         expect(req.request.method).toEqual('POST');
   
