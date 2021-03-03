@@ -2,7 +2,7 @@ import { AppService } from './app.service';
 import { HttpTestingController, HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { TestBed } from '@angular/core/testing';
-describe('UserManagementService', () => {
+describe('AppService', () => {
     let service: AppService;
     let httpTestingController: HttpTestingController;
   
@@ -19,8 +19,8 @@ describe('UserManagementService', () => {
         imports: [HttpClientTestingModule],
         providers: [AppService]
       });
-      //service = TestBed.inject(AppService);
-      //httpTestingController = TestBed.inject(HttpTestingController);
+      service = TestBed.get(AppService);
+      httpTestingController = TestBed.get(HttpTestingController);
     });
   
   
@@ -28,7 +28,7 @@ describe('UserManagementService', () => {
       it('should called the right url', () => {
         service.listar().subscribe(() => { });
   
-        const req = httpTestingController.expectOne('http://teste.com/veiculo');
+        const req = httpTestingController.expectOne('http://localhost:8080/veiculo');
   
         expect(req.request.method).toEqual('GET');
   
@@ -41,7 +41,7 @@ describe('UserManagementService', () => {
       it('should called the right url', () => {
         service.createVeiculo(params).subscribe(() => { });
   
-        const req = httpTestingController.expectOne('http://teste.com/veiculo');
+        const req = httpTestingController.expectOne('http://localhost:8080/veiculo');
   
         expect(req.request.method).toEqual('POST');
   
