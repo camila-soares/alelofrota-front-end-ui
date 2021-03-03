@@ -23,9 +23,6 @@ describe('UserManagementService', () => {
       //httpTestingController = TestBed.inject(HttpTestingController);
     });
   
-    afterEach(() => {
-      httpTestingController.verify();
-    });
   
     describe('GET()', () => {
       it('should called the right url', () => {
