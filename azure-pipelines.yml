@@ -19,11 +19,5 @@ steps:
 - script: ng test --browsers=ChromeHeadless --watch=false
   displayName: 'Run unit Tests'
 
-- task: PublishTestResult@2
-  displayName: 'Publish Test Results'
-  inputs:
-    testResultsFiles: '**/testresults/junit/unit-test-result.xml'
-  condition: always()
-
 - script: ng build --prod
   displayName: 'ng build'
